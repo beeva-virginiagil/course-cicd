@@ -1,3 +1,8 @@
 node('master') {
-  sh 'echo hello world'
+  stage 'Checkout'
+  sh 'echo checking out'
+  stage 'Build'
+  sh 'echo building'
+  stage 'Test'
+  sh 'echo testing'
 }
