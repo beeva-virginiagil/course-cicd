@@ -4,11 +4,10 @@ node('master') {
   }
 
   stage('Test') {
-    sh 'env | sort'
     sh 'echo Unit test'
     sh 'pwd'
     sh 'ls -l'
-    sh './simplehttpserver/tests/unittests.sh .'
+    sh './simplehttpserver/tests/unittests.sh ./simplehttpserver/'
   }
 
   stage('Build') {
