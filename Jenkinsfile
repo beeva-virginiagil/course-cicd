@@ -9,8 +9,7 @@ node('master') {
   }
 
   stage('Package and publish') {
-    def buildid = env.BUILD_ID
-    sh 'tar -zcvf simplehttpserver$buildid.tar.gz ./simplehttpserver'
+    sh "tar -zcvf simplehttpserver${env.BUILD_ID}.tar.gz ./simplehttpserver"
     sh 'aws s3 cp simplehttpserver.tar.gz s3://clase-gendevops2-cicd-ci/'
   }
 
