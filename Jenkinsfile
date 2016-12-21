@@ -8,9 +8,10 @@ node('master') {
     sh './simplehttpserver/tests/unittests.sh ./simplehttpserver/'
   }
 
-  stage('Build and publish') {
+  stage('Package and publish') {
+    sh 'env'
     sh 'tar -zcvf simplehttpserver.tar.gz ./simplehttpserver'
-    sh 'echo publish'
+    sh 'aws s3 cp simplehttpserver.tar.gz s3://clase-gendevops2-cicd-ci/'
   }
 
   stage('Deploy') {
