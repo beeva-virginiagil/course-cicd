@@ -10,7 +10,7 @@ node('master') {
 
   stage('Package and publish') {
     sh "tar -zcvf simplehttpserver${env.BUILD_ID}.tar.gz ./simplehttpserver"
-    sh 'aws s3 cp simplehttpserver.tar.gz s3://clase-gendevops2-cicd-ci/'
+    sh "aws s3 cp simplehttpserver${env.BUILD_ID}.tar.gz s3://clase-gendevops2-cicd-ci/"
   }
 
   stage('Deploy') {
