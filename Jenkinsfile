@@ -9,7 +9,8 @@ node('master') {
   }
 
   stage('Build and publish') {
-    sh 'echo building'
+    sh 'tar -zcvf simplehttpserver.tar.gz ./simplehttpserver'
+    sh 'echo publish'
   }
 
   stage('Deploy') {
