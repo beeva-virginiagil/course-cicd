@@ -21,11 +21,11 @@ node('master') {
     sh "mv /tmp/simplehttpserver/${env.JOB_NAME}-${env.BUILD_ID}/simplehttpserver/* /opt/${env.JOB_NAME}-${env.BUILD_ID}/"
     sh "rm -rf /opt/${env.JOB_NAME}-${env.BUILD_ID}/tests"
     sh "mv /opt/${env.JOB_NAME}-${env.BUILD_ID}/httpserver.py /opt/${env.JOB_NAME}-${env.BUILD_ID}/httpserver-${env.JOB_NAME}.py"
-    sh "python3 /opt/${env.JOB_NAME}-${env.BUILD_ID}/httpserver-${env.JOB_NAME}.py &"
-    sh "pkill -f httpserver-${env.JOB_NAME}.py"
   }
 
   stage('Functional tests') {
-    sh 'echo func'
+    sh "python3 /opt/${env.JOB_NAME}-${env.BUILD_ID}/httpserver-${env.JOB_NAME}.py &"
+    sh 'nc -z -v -w5 54.154.95.222 8001'
+    sh "pkill -f httpserver-${env.JOB_NAME}.py"
   }
 }
