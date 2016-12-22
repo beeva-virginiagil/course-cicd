@@ -26,6 +26,6 @@ node('master') {
   }
 
   stage('Functional tests') {
-    sh '
+    sh 'echo func'
   }
 }
