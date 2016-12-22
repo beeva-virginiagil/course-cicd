@@ -25,7 +25,7 @@ node('master') {
   }
   stage('Functional tests') {
     sh "python3 /opt/${env.JOB_NAME}-${env.BUILD_ID}/httpserver-${env.JOB_NAME}.py &"
-    sh 'nc -z -v -w5 54.154.95.222 8001'
+    sh 'nc -z -v -w5 54.154.95.222 8006'
     sh "pkill -f httpserver-${env.JOB_NAME}.py"
   }
 ~        
