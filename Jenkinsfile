@@ -18,7 +18,7 @@ node('master') {
     sh "mkdir /opt/${env.BUILD_ID}"
     sh "mkdir -p /tmp/simplehttpserver/${env.BUILD_ID}"
     sh "tar -zxvf /tmp/simplehttpserver${env.BUILD_ID}.tar.gz -C /tmp/simplehttpserver/${env.BUILD_ID}/"
-    sh "mv /tmp/simplehttpserver/${env.BUILD_ID}/* /opt/${env.BUILD_ID}/"
+    sh "mv /tmp/simplehttpserver/${env.BUILD_ID}/simplehttpserver/* /opt/${env.BUILD_ID}/"
     sh "rm -rf /opt/${env.BUILD_ID}/tests"
   }
 
