@@ -14,6 +14,7 @@ node('master') {
   }
 
   stage('Deploy') {
+    sh 'rm -rf /tmp/simplehttpserver*'
     sh "aws s3 cp s3://clase-gendevops2-cicd-ci/simplehttpserver${env.BUILD_ID}.tar.gz /tmp/"
     sh "mkdir /opt/${env.BUILD_ID}"
     sh "tar -zxvf /tmp/simplehttpserver${env.BUILD_ID}.tar.gz -C /tmp/${env.BUILD_ID}/"
